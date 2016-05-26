@@ -1,0 +1,52 @@
+<ion-view title="Mesas">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+    <ion-list>
+      <ion-item>
+        <div ng-repeat="partida in partidas">
+  	     <h2>Mesa: {{nombreMesa}}</h2>
+         <br><br>
+         <h2>Partidas:</h2>
+         <br>
+  	     <p>Partida #: {{$index+1}}</p>
+         <p>Usuario Local: {{partida.local}}</p>
+         <p>Usuario Visitante: {{partida.visitante}}</p>
+         <p>Fecha: {{partida.fecha}}</p>
+         <br>
+        </div>
+         <br>
+         <hr>
+         <button class="button-small button button-positive icon ion-plus" ng-click="verDatos=true" ng-show="!verDatos">
+         &nbsp;&nbsp;&nbsp;Añadir Partida&nbsp;&nbsp;&nbsp;
+         </button>
+         <button class="button-small button button-assertive icon ion-plus" ng-click="verDatos=false" ng-show=verDatos>
+         &nbsp;&nbsp;&nbsp;Cancelar&nbsp;&nbsp;&nbsp;
+         </button>
+         <div class="list card padding" ng-show="verDatos">
+          <label class="item item-input">
+            <input type="text" placeholder="Fecha" ng-model="newpartida.fecha">
+          </label>
+          <label class="item item-input">
+            <input type="text" placeholder="Local" ng-model="newpartida.local">
+          </label>
+          <label class="item item-input">
+            <input type="text" placeholder="Visitante" ng-model="newpartida.visitante">
+          </label>
+          <br>
+          <div class="button-bar social-login">
+            <button class="button button-balanced icon ion-plus-circled" ng-click="addPartida(newpartida.fecha, newpartida.local, newpartida.visitante)" ng-disabled="!newpartida.local || !newpartida.visitante || !newpartida.fecha">
+            &nbsp;&nbsp;&nbsp;Añadir Partida
+            </button>
+            <button id="" class="button button-assertive icon ion-close-circled" ui-sref='freepong.mesasealist'>
+            &nbsp;&nbsp;&nbsp;Cancelar
+            </button>
+          </div>
+         <!-- <button id="" class="button-small button button-balanced icon ion-plus" ng-click="addPartida()">
+         &nbsp;&nbsp;&nbsp;Añadir Partida&nbsp;&nbsp;&nbsp;
+         </button> -->
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
